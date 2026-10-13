@@ -72,6 +72,7 @@ test("all illustrations have real responsive WebP assets", async () => {
     "frontend-craft",
     "prompt-direction",
     "design-system",
+    "review-refine",
   ]) {
     for (const suffix of ["", "-768"]) {
       const file = await readFile(`public/images/${name}${suffix}.webp`);

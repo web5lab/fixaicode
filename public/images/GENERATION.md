@@ -25,3 +25,16 @@ Premium 3D editorial cover illustration, landscape 3:2, for a practical guide ab
 Files: design-system.webp, design-system-768.webp
 
 Premium 3D editorial technology cover, landscape 3:2 image, for a guide about building a small consistent design system. An elegant physical kit of UI building blocks on a pale ivory #f4f4f2 tabletop: three stacked rounded rectangular ceramic panels with orderly small charcoal squares, one vivid orange #ff5a1f square, inset typography-like horizontal grooves without readable text; an orange ring and two small ivory rounded buttons arranged precisely beside them. Slightly elevated isometric view, large central composition, stylish composition resembling a minimalist architectural model. Warm natural studio light from upper left, soft contact shadows, matte chalk ceramic with a few glossy orange enamel highlights. Exceptionally high-end 3D design render, restrained, crisp, sophisticated. No text, logos, watermarks, people, gradients or excessive decoration.
+
+## review-refine
+
+Files: review-refine.webp, review-refine-768.webp
+
+Use case: stylized-concept
+Asset type: inline editorial illustration for fixaicode.org, a practical journal about improving AI-generated websites.
+Primary request: show an AI website first draft becoming a clearer, maintainable frontend through human review and repeated refinement.
+Scene: premium tactile 3D still life on a warm ivory seamless tabletop. One large charcoal code panel at the left contains many crowded, uneven abstract code grooves, suggesting everything crammed into one file. At the right, a beautifully aligned ivory browser layout and three smaller separate component tiles show orderly spacing, distinct responsibilities, and small orange accents. In the center foreground a sculptural orange magnifying glass rests over a small review note tile. A single orange curved ribbon loops behind the objects to suggest the next pass of review and improvement.
+Style: sophisticated technology publication illustration, physically realistic matte ceramic and satin charcoal surfaces with vivid orange enamel details, crisp crafted edges, premium studio product render. Match a restrained warm-white, charcoal, and orange #f2582b frontend brand.
+Composition: landscape 3:2, elevated three-quarter perspective, balanced full composition with generous margins, unmistakable left-to-right progression from crowded draft to organized components. No grid of unrelated scenes.
+Lighting: soft natural studio light from upper left, subtle contact shadows, high detail.
+Constraints: no readable text, no letters or labels, no logos, no watermarks, no people, no purple glow, no gradients. The code marks and UI bars are abstract physical grooves rather than legible text.

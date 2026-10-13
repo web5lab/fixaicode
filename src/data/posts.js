@@ -218,9 +218,9 @@ export const posts = [
   {
     ...author,
     slug: "small-design-system-big-difference",
-    title: "A small design system. A big difference.",
+    title: "Better AI frontends are built one review at a time.",
     subtitle:
-      "The colors, type, and spacing decisions that stop your AI-generated UI from drifting apart.",
+      "Turn a messy first draft into a website with a clear flow, organized code, and a design system you can keep improving.",
     date: "2026-10-13",
     tag: "Frontend design",
     hero: cover(
@@ -228,17 +228,79 @@ export const posts = [
       "Stacked ceramic design panels with consistent controls and an orange accent ring",
     ),
     takeaway:
-      "Start with a handful of semantic colors, a clear type scale, a spacing rhythm, and a few shared components. Expand the system when a real pattern appears.",
+      "Give the AI a clear page flow and simple code boundaries. Review the website yourself, send back specific feedback, and check each refinement. Software is meant to be fixed and improved.",
     content: [
       {
         type: "p",
-        text: "A frontend can look inconsistent without any individual component looking obviously broken. One button is slightly taller. One card has a softer radius. Every section has its own interpretation of muted gray.",
+        text: "An AI can give you a website before you have decided how the website should work. The page renders, the buttons have color, and the sections look complete. But the visitor’s journey may be unclear, the content may repeat itself, and the code may put the entire application into one growing file.",
       },
       {
         type: "p",
-        text: "AI-assisted projects can accumulate these small differences quickly. Each request may be reasonable in isolation, while the whole interface gradually loses its rhythm. A small shared system gives both you and the assistant a set of decisions to reuse.",
+        text: "Treat that first generation as something to review. Open the site, follow the flow yourself, look at the structure behind it, and tell the AI exactly what needs another pass. A useful workflow is to generate, inspect, refine, and verify. Repeat it while there are concrete problems worth solving.",
       },
-      { type: "h2", text: "Name colors by what they do" },
+      { type: "h2", text: "Give the first draft a clear flow" },
+      {
+        type: "p",
+        text: "A prompt such as “build a beautiful website” leaves the assistant to invent the audience, the section order, and the purpose of each button. You can end up with several attractive sections that never answer the visitor’s next question. Adding more sections will not resolve an unclear purpose.",
+      },
+      {
+        type: "p",
+        text: "Before generating a page, write down who it serves and the one main thing that person should be able to do. For a developer tool, the flow might be: understand the problem, see an example of the result, learn how setup works, and try the tool. Each section should help the visitor take the next step.",
+      },
+      {
+        type: "list",
+        items: [
+          "Start with the visitor’s question. What is this, who is it for, and why should they keep reading?",
+          "Use real content to connect the sections. An example or short demonstration should explain the promise in the headline.",
+          "Give the main action a clear destination. Decide what happens after “Get started” before styling the button.",
+          "Include the rest of the journey: navigation, mobile menus, form feedback, loading states, and a way to recover from an error where those features exist.",
+        ],
+      },
+      {
+        type: "callout",
+        tone: "good",
+        label: "Plan the flow before generating the page",
+        text: "“This site helps developers create website images. Lead with the result, show a real example, explain setup, and end with a clear next step. Outline the visitor journey and the states each interaction needs before writing the page.”",
+      },
+      { type: "h2", text: "Untangle the code before adding more" },
+      {
+        type: "p",
+        text: "One common first-draft problem is a single file containing navigation, page sections, article data, form state, and a long list of styling decisions. When the next request arrives, more code gets added to that same file. A small visual change can then require navigating several unrelated responsibilities.",
+      },
+      {
+        type: "p",
+        text: "A single file can be perfectly reasonable for a tiny prototype. The warning sign is how hard it becomes to make a change safely: repeated markup drifts apart, unrelated state gets tangled together, or you cannot tell where one feature ends. Split code around meaningful responsibilities when those problems appear.",
+      },
+      {
+        type: "code",
+        lang: "One possible structure for a small React site",
+        text: "src/\n├── App.jsx                  # Compose routes and the shared shell\n├── pages/\n│   ├── Home.jsx             # Home page flow\n│   └── Article.jsx          # Article layout\n├── components/\n│   ├── SiteHeader.jsx       # Navigation and mobile menu\n│   └── ArticleCard.jsx      # Repeated article preview\n├── data/\n│   └── articles.js          # Content, separate from its layout\n└── styles/\n    ├── tokens.css           # Shared visual decisions\n    └── site.css             # Layout and component styles",
+      },
+      {
+        type: "p",
+        text: "Adapt this outline to your framework and the project’s existing conventions. Keep state near the feature that owns it, extract components that have a clear job, and give repeated content one source of truth. Creating a separate file for every few lines can make a small site harder to follow too.",
+      },
+      {
+        type: "callout",
+        tone: "note",
+        label: "A focused refactoring request",
+        text: "“Inspect the current page and identify mixed responsibilities. Separate the shared navigation, article layout, and article data using the project’s conventions. Preserve the visible design, URLs, and interactions, then verify that they still work.”",
+      },
+      {
+        type: "image",
+        ...cover(
+          "review-refine",
+          "A crowded code panel beside organized website components, with an orange magnifying glass and a looping ribbon representing review and refinement",
+        ),
+        caption:
+          "A first draft becomes useful through review: inspect the page, clarify the structure, and feed the next improvement back to the AI.",
+      },
+      { type: "h2", text: "Give the AI a small design system" },
+      {
+        type: "p",
+        text: "A frontend can look inconsistent without any individual component looking obviously broken. One button is slightly taller. One card has a softer radius. Every section has its own interpretation of muted gray. A small shared system gives you and the assistant a set of decisions to reuse as the site grows.",
+      },
+      { type: "h3", text: "Name colors by what they do" },
       {
         type: "p",
         text: "A palette becomes more useful when its names describe roles. Background, surface, text, muted text, border, and accent are enough to begin. Components can refer to those roles without knowing the exact shade underneath.",
@@ -252,7 +314,7 @@ export const posts = [
         type: "p",
         text: "Roles also make theme changes easier to reason about. A dark theme can change the value of surface and text in one place. Check the resulting combinations rather than assuming a palette that works in one theme will work in another.",
       },
-      { type: "h2", text: "Give typography a clear hierarchy" },
+      { type: "h3", text: "Give typography a clear hierarchy" },
       {
         type: "p",
         text: "You do not need many sizes. You need a clear relationship between the page title, section heading, card title, body copy, and supporting label. Decide which role should attract attention and give the others room to support it.",
@@ -270,7 +332,7 @@ export const posts = [
         type: "p",
         text: "Typography is also spacing. The gap after a heading tells the reader which paragraph belongs to it. The gap before the next heading signals a new thought. Treat these relationships as part of the system.",
       },
-      { type: "h2", text: "Choose a spacing rhythm" },
+      { type: "h3", text: "Choose a spacing rhythm" },
       {
         type: "p",
         text: "Pick a short sequence of spacing values and use it consistently. A scale such as 4, 8, 12, 16, 24, 32, 48, and 64 pixels is a reasonable starting point. It is a tool for consistency, not a rule that must defeat your judgment.",
@@ -285,7 +347,7 @@ export const posts = [
         label: "A useful instruction for your assistant",
         text: "“Use the existing spacing tokens. If a new value seems necessary, explain which relationship the current scale cannot express before adding it.”",
       },
-      { type: "h2", text: "Reuse behavior as well as appearance" },
+      { type: "h3", text: "Reuse behavior as well as appearance" },
       {
         type: "p",
         text: "A shared button should carry more than a background color. It should have a visible focus state, a comfortable target size, and consistent disabled behavior when needed. A shared article card should handle a long title and a missing description without breaking the layout.",
@@ -294,24 +356,132 @@ export const posts = [
         type: "p",
         text: "Start with the pieces that actually repeat. Navigation, buttons, article cards, and text links are common candidates. Resist creating a large abstraction for a component that only appears once and has no stable pattern yet.",
       },
-      { type: "h2", text: "Keep the system small enough to use" },
+      { type: "h3", text: "Keep the system small enough to use" },
       {
         type: "p",
         text: "A system is only useful if it helps the next change. Put the tokens somewhere obvious, keep a representative component easy to find, and tell the assistant to inspect both before editing.",
       },
       {
         type: "p",
-        text: "Then revisit the result in context. Check a few pages, a narrow screen, keyboard focus, and both themes if you support them. The goal is a coherent experience, not an impressive token file.",
+        text: "Start small and repeat deliberately. Add a new token or component when an actual pattern needs it. The system should make the next improvement easier to understand and apply.",
+      },
+      { type: "h2", text: "Review the website yourself" },
+      {
+        type: "p",
+        text: "After the AI finishes a pass, open the actual website. A successful build tells you that the project can be built; it does not tell you whether the page makes sense to a visitor. Screenshots help with layout, but you also need to click, type, scroll, and follow the main journey.",
       },
       {
         type: "p",
-        text: "Start small. Repeat deliberately. Let real needs earn their place in the system.",
+        text: "Read the page from the top without filling in missing explanations from your own knowledge of the product. Is the purpose clear? Does each section answer the question raised by the previous one? Does the main action lead somewhere useful? Write down where you hesitate.",
+      },
+      {
+        type: "list",
+        items: [
+          "Check desktop and a narrow mobile view. Look for clipped headings, crowded buttons, unexpected horizontal scrolling, and images that hide important content.",
+          "Follow the main action from beginning to end. Open navigation, visit a detail page, use browser back, and reload a deep link where relevant.",
+          "Try realistic content and awkward states: a long title, an empty search, an invalid form value, or a failed request if the feature supports it.",
+          "Use the keyboard. Make sure you can reach controls, see focus, open and close the menu, and understand what each control does.",
+          "Review the code changes as well. Look for duplicate components, new hard-coded styles, and unrelated edits that make the next change harder.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Keep a short issue list with the page, screen size, action, and observed result. A screenshot of the problem makes visual feedback easier to follow. Fix a broken journey or unreadable content before spending another pass on subtle shadows.",
+      },
+      { type: "h2", text: "Send specific feedback back to the AI" },
+      {
+        type: "p",
+        text: "“Make it better” asks the assistant to guess again. A useful refinement request names the problem, explains what should happen, and says which working parts to preserve. Keep each pass focused enough that you can tell whether it improved the result.",
+      },
+      {
+        type: "code",
+        lang: "Copyable refinement prompt",
+        wrap: true,
+        text: "Page: /blog\nScreen: 390px wide\n\nObserved:\nThe article title is clipped, and opening the menu covers\nthe close button. See the attached screenshot.\n\nExpected:\nThe full title wraps within the card. The open menu has\na visible close control that also works with the keyboard.\n\nPreserve:\nKeep the current colors, article order, and desktop layout.\n\nScope:\nFix these two issues using the existing components and tokens.\n\nVerify:\nRecheck the affected mobile view, desktop layout, and keyboard\nflow. Show the result and say what still needs review.",
+      },
+      {
+        type: "p",
+        text: "Attach evidence from the site you actually reviewed. Include the steps that reproduce a behavior problem; point to the exact section for a design problem. If you already like the typography or spacing, say so. That gives the assistant useful boundaries for the next edit.",
+      },
+      {
+        type: "p",
+        text: "Separate a structural cleanup from a visual redesign when that makes the result easier to assess. For example, first ask the AI to extract repeated article cards while preserving their behavior. Then request the spacing adjustment. You can review the purpose and outcome of each change.",
+      },
+      { type: "h2", text: "Fix, verify, and keep improving" },
+      {
+        type: "p",
+        text: "When the assistant reports a fix, repeat the steps that exposed the problem. Check a nearby state too: a mobile menu change should still leave desktop navigation working, and a shared card change should work with another article’s longer title. Run the project’s relevant checks alongside this manual review.",
+      },
+      {
+        type: "p",
+        text: "Keep changes small enough to understand and save a working version before the next substantial pass. If a refinement causes a regression, you need to know what changed and be able to undo it. Feed the new observation back into the same review loop.",
+      },
+      {
+        type: "callout",
+        tone: "good",
+        label: "Generate → inspect → refine → verify",
+        text: "Software is meant to be fixed and improved. The first generation starts the process. Your review gives the next generation a clear purpose.",
+      },
+      {
+        type: "p",
+        text: "Give each pass a finish line. The main journey should work, the changed states should be checked, and the code should be understandable enough for the next change. Ship that improvement, learn from real use, and let the next concrete problem guide the next pass.",
+      },
+      { type: "h2", text: "Bonus: tools for your next frontend" },
+      {
+        type: "p",
+        text: "These three tools from the PostMCP AI family can help you take a design system into a finished page. Bring your palette, type, and spacing rules into the brief so each new layout and visual feels like part of the same site.",
+      },
+      {
+        type: "tools",
+        tools: [
+          {
+            name: "Redesignr",
+            category: "Explore a new direction",
+            icon: "grid",
+            url: "https://redesignr.ai/",
+            domain: "redesignr.ai",
+            description:
+              "Turn a website URL, screenshot, or brief into a fresh layout direction. Refine it with AI or visual editing, then export the frontend code as a starting point for your build.",
+          },
+          {
+            name: "Character Animation AI",
+            category: "Give your site some personality",
+            icon: "sparkle",
+            url: "https://characteranimationai.com/",
+            domain: "characteranimationai.com",
+            description:
+              "Create a character from a prompt or your own image, then explore new motions and moods. Try a welcoming mascot or a small celebration that fits your product’s personality.",
+          },
+          {
+            name: "Image MCP Server",
+            category: "Create the visuals in your editor",
+            icon: "image",
+            url: "https://imagemcpserver.com/",
+            domain: "imagemcpserver.com",
+            description:
+              "Generate and edit website images through your coding assistant. Create hero artwork and blog covers, remove backgrounds, and compress assets before adding them to your frontend.",
+          },
+        ],
       },
     ],
   },
 ].map((post) => ({
   ...post,
-  readTime: `${Math.max(1, Math.ceil(post.content.reduce((count, block) => count + (block.text || block.items?.join(" ") || "").split(/\s+/).length, 0) / 200))} min read`,
+  readTime: `${Math.max(
+    1,
+    Math.ceil(
+      post.content.reduce((count, block) => {
+        const text =
+          block.text ||
+          block.items?.join(" ") ||
+          block.tools
+            ?.map((tool) => `${tool.name} ${tool.category} ${tool.description}`)
+            .join(" ") ||
+          "";
+        return count + (text.match(/\S+/g)?.length || 0);
+      }, 0) / 200,
+    ),
+  )} min read`,
 }));
 export function getPost(slug) {
   return posts.find((post) => post.slug === slug);

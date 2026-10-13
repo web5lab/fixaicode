@@ -17,8 +17,37 @@ function Block({ block }) {
   switch (block.type) {
     case "h2":
       return <h2 id={headingId(block.text)}>{block.text}</h2>;
+    case "h3":
+      return <h3 id={headingId(block.text)}>{block.text}</h3>;
     case "p":
       return <p>{block.text}</p>;
+    case "tools":
+      return (
+        <div className="bonus-tools">
+          {block.tools.map((tool) => (
+            <a
+              key={tool.url}
+              className="bonus-tool"
+              href={tool.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="bonus-tool-icon">
+                <Icon name={tool.icon} size={22} />
+              </span>
+              <div className="bonus-tool-content">
+                <span className="eyebrow">{tool.category}</span>
+                <h3>{tool.name}</h3>
+                <p>{tool.description}</p>
+                <span className="bonus-tool-domain">
+                  {tool.domain}
+                  <Icon name="diagonal" size={14} />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      );
     case "list":
       return (
         <ul>
@@ -29,7 +58,7 @@ function Block({ block }) {
       );
     case "code":
       return (
-        <div className="code-block">
+        <div className={`code-block${block.wrap ? " code-block-wrap" : ""}`}>
           <div className="code-header">
             <span>{block.lang || "text"}</span>
             <CopyButton text={block.text} label="Copy code" />
@@ -59,6 +88,8 @@ function Block({ block }) {
         <figure className="inline-figure">
           <img
             src={block.src}
+            srcSet={block.srcSet}
+            sizes="(max-width: 760px) calc(100vw - 40px), 700px"
             alt={block.alt}
             width="1536"
             height="1024"
