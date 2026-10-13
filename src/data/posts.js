@@ -1,109 +1,318 @@
 function cover(name, alt) {
-  return { src: `/images/${name}.webp`, srcSet: `/images/${name}-768.webp 768w, /images/${name}.webp 1536w`, alt }
+  return {
+    src: `/images/${name}.webp`,
+    srcSet: `/images/${name}-768.webp 768w, /images/${name}.webp 1536w`,
+    alt,
+  };
 }
-const author = { author: 'Shiva', authorRole: 'Founder, PostMCP AI' }
+const author = { author: "Shiva", authorRole: "Founder, PostMCP AI" };
 export const posts = [
   {
     ...author,
-    slug: 'how-to-fix-ai-frontend',
-    title: 'How to fix AI-generated frontend code',
-    subtitle: 'The first draft is rarely the best draft. A practical method for turning a generic AI frontend into something worth shipping.',
-    date: '2025-10-13',
-    updated: '2026-10-13',
-    tag: 'AI coding',
-    hero: cover('frontend-craft', 'An exploded website layout made from ivory and orange interface components'),
-    takeaway: 'Give the model a specific visual direction, a small design system, and a clear way to check its work. Then refine one section at a time.',
+    slug: "how-to-fix-ai-frontend",
+    title: "How to fix AI-generated frontend code",
+    subtitle:
+      "The first draft is rarely the best draft. A practical method for turning a generic AI frontend into something worth shipping.",
+    date: "2025-10-13",
+    updated: "2026-10-13",
+    tag: "AI coding",
+    hero: cover(
+      "frontend-craft",
+      "An exploded website layout made from ivory and orange interface components",
+    ),
+    takeaway:
+      "Give the model a specific visual direction, a small design system, and a clear way to check its work. Then refine one section at a time.",
     content: [
-      { type: 'p', text: 'You ask an AI to build a website. A few minutes later, you have a working page: a headline, some cards, a call to action. Everything is technically there, but it still feels like a first draft. The spacing is uneven. The copy could belong to any product. The page has no clear point of view.' },
-      { type: 'p', text: 'That is a useful place to start. You have something concrete to inspect, and improving something concrete is much easier than debating an empty canvas. The next step is to replace vague requests for polish with a series of specific decisions.' },
-      { type: 'h2', text: '1. Give the AI a direction it can follow' },
-      { type: 'p', text: '“Make it modern” leaves almost every design decision open. Start with the audience, the purpose of the page, and a reference you can actually show the assistant. A screenshot or an accessible page is more useful than assuming the model knows a brand’s current website.' },
-      { type: 'p', text: 'Describe the qualities you want to learn from the reference: the size of the headline, the restraint in the color palette, the rhythm between sections. Keep your own content and identity. A reference should help you communicate decisions, not turn your product into a copy of somebody else’s.' },
-      { type: 'callout', tone: 'note', label: 'Too much left to interpretation', text: '“Make this landing page look modern and professional. Add some nice animations.”' },
-      { type: 'callout', tone: 'good', label: 'A more useful brief', text: '“This page helps independent developers improve AI-generated frontends. Use one strong headline, a warm white canvas, charcoal text, and orange for emphasis. Keep the reading area narrow. Use the attached reference for its spacing and type hierarchy. Preserve the current navigation and article links.”' },
-      { type: 'h2', text: '2. Build a small, consistent foundation' },
-      { type: 'p', text: 'Before asking for another section, inspect what already exists. If there is a button component, reuse it. If the project defines colors and spacing, work with those tokens. A visual redesign becomes harder to maintain when every component invents a slightly different shade or corner radius.' },
-      { type: 'p', text: 'For a new project, create a modest structure that separates shared components, page layouts, and content. You do not need an elaborate architecture. You need a place for the next piece of work to belong.' },
-      { type: 'code', lang: 'Project structure', text: 'src/\n├── components/   # Shared navigation, buttons, article cards\n├── pages/        # Page layouts\n├── data/         # Article content and site information\n├── hooks/        # Reusable behavior\n└── index.css     # Type, color, spacing, and layout rules' },
-      { type: 'list', items: ['Choose one display typeface and a readable body face. Define sizes for headings, body copy, and labels.', 'Set a small spacing scale. Reuse the same gaps for related elements across the site.', 'Keep a clear distinction between a primary action, a secondary action, and a plain text link.', 'Ask the assistant to refine one representative section first. Review it before extending the pattern.'] },
-      { type: 'h2', text: '3. Give every visual a job' },
-      { type: 'p', text: 'Images help when they explain the product, establish a point of view, or give readers a useful visual landmark. They do not need to appear beside every sentence. Start with the most important image and decide what it should communicate before generating or sourcing it.' },
-      { type: 'p', text: 'For an editorial site, a coherent family of article covers can make the journal feel intentional. For a product, a real screenshot may explain more than a decorative illustration. Keep the surrounding layout quiet enough that the image can do its job.' },
-      { type: 'list', items: ['Write an image brief with a subject, composition, materials, and a palette that belongs to the site.', 'Use descriptive alt text for meaningful images. Use an empty alt attribute for purely decorative images.', 'Export appropriately sized images and provide smaller variants for narrower screens.', 'Reserve the image’s dimensions in the layout so content does not jump while it loads.'] },
-      { type: 'h2', text: '4. Review the experience, not just the screenshot' },
-      { type: 'p', text: 'A polished desktop screenshot can hide a surprising number of problems. Resize the page. Navigate with a keyboard. Search for something that does not exist. Open a long article, follow a link, and use the browser’s back button. These ordinary actions expose the gaps that a visual pass misses.' },
-      { type: 'p', text: 'Give feedback at the level of the problem you can observe. “The paragraph is difficult to scan at this width” is more useful than “the typography feels off.” Ask for one change, inspect the result, and keep the parts that already work.' },
-      { type: 'callout', tone: 'good', label: 'A useful final pass', text: '“Check this page at narrow mobile and desktop widths. Verify focus visibility, text contrast, image loading, and every visible action. Fix overflow and broken states without changing the established visual direction.”' },
-      { type: 'h2', text: 'The takeaway' },
-      { type: 'p', text: 'A better frontend comes from a better sequence of decisions. Set the direction, establish the foundation, choose purposeful visuals, and test the experience. AI can help with every step, but the quality of the result still depends on what you ask it to notice.' },
-      { type: 'p', text: 'You do not need to get everything right in the first prompt. You need to make the next draft more deliberate than the last one.' },
+      {
+        type: "p",
+        text: "You ask an AI to build a website. A few minutes later, you have a working page: a headline, some cards, a call to action. Everything is technically there, but it still feels like a first draft. The spacing is uneven. The copy could belong to any product. The page has no clear point of view.",
+      },
+      {
+        type: "p",
+        text: "That is a useful place to start. You have something concrete to inspect, and improving something concrete is much easier than debating an empty canvas. The next step is to replace vague requests for polish with a series of specific decisions.",
+      },
+      { type: "h2", text: "1. Give the AI a direction it can follow" },
+      {
+        type: "p",
+        text: "“Make it modern” leaves almost every design decision open. Start with the audience, the purpose of the page, and a reference you can actually show the assistant. A screenshot or an accessible page is more useful than assuming the model knows a brand’s current website.",
+      },
+      {
+        type: "p",
+        text: "Describe the qualities you want to learn from the reference: the size of the headline, the restraint in the color palette, the rhythm between sections. Keep your own content and identity. A reference should help you communicate decisions, not turn your product into a copy of somebody else’s.",
+      },
+      {
+        type: "callout",
+        tone: "note",
+        label: "Too much left to interpretation",
+        text: "“Make this landing page look modern and professional. Add some nice animations.”",
+      },
+      {
+        type: "callout",
+        tone: "good",
+        label: "A more useful brief",
+        text: "“This page helps independent developers improve AI-generated frontends. Use one strong headline, a warm white canvas, charcoal text, and orange for emphasis. Keep the reading area narrow. Use the attached reference for its spacing and type hierarchy. Preserve the current navigation and article links.”",
+      },
+      { type: "h2", text: "2. Build a small, consistent foundation" },
+      {
+        type: "p",
+        text: "Before asking for another section, inspect what already exists. If there is a button component, reuse it. If the project defines colors and spacing, work with those tokens. A visual redesign becomes harder to maintain when every component invents a slightly different shade or corner radius.",
+      },
+      {
+        type: "p",
+        text: "For a new project, create a modest structure that separates shared components, page layouts, and content. You do not need an elaborate architecture. You need a place for the next piece of work to belong.",
+      },
+      {
+        type: "code",
+        lang: "Project structure",
+        text: "src/\n├── components/   # Shared navigation, buttons, article cards\n├── pages/        # Page layouts\n├── data/         # Article content and site information\n├── hooks/        # Reusable behavior\n└── index.css     # Type, color, spacing, and layout rules",
+      },
+      {
+        type: "list",
+        items: [
+          "Choose one display typeface and a readable body face. Define sizes for headings, body copy, and labels.",
+          "Set a small spacing scale. Reuse the same gaps for related elements across the site.",
+          "Keep a clear distinction between a primary action, a secondary action, and a plain text link.",
+          "Ask the assistant to refine one representative section first. Review it before extending the pattern.",
+        ],
+      },
+      { type: "h2", text: "3. Give every visual a job" },
+      {
+        type: "p",
+        text: "Images help when they explain the product, establish a point of view, or give readers a useful visual landmark. They do not need to appear beside every sentence. Start with the most important image and decide what it should communicate before generating or sourcing it.",
+      },
+      {
+        type: "p",
+        text: "For an editorial site, a coherent family of article covers can make the journal feel intentional. For a product, a real screenshot may explain more than a decorative illustration. Keep the surrounding layout quiet enough that the image can do its job.",
+      },
+      {
+        type: "list",
+        items: [
+          "Write an image brief with a subject, composition, materials, and a palette that belongs to the site.",
+          "Use descriptive alt text for meaningful images. Use an empty alt attribute for purely decorative images.",
+          "Export appropriately sized images and provide smaller variants for narrower screens.",
+          "Reserve the image’s dimensions in the layout so content does not jump while it loads.",
+        ],
+      },
+      { type: "h2", text: "4. Review the experience, not just the screenshot" },
+      {
+        type: "p",
+        text: "A polished desktop screenshot can hide a surprising number of problems. Resize the page. Navigate with a keyboard. Search for something that does not exist. Open a long article, follow a link, and use the browser’s back button. These ordinary actions expose the gaps that a visual pass misses.",
+      },
+      {
+        type: "p",
+        text: "Give feedback at the level of the problem you can observe. “The paragraph is difficult to scan at this width” is more useful than “the typography feels off.” Ask for one change, inspect the result, and keep the parts that already work.",
+      },
+      {
+        type: "callout",
+        tone: "good",
+        label: "A useful final pass",
+        text: "“Check this page at narrow mobile and desktop widths. Verify focus visibility, text contrast, image loading, and every visible action. Fix overflow and broken states without changing the established visual direction.”",
+      },
+      { type: "h2", text: "The takeaway" },
+      {
+        type: "p",
+        text: "A better frontend comes from a better sequence of decisions. Set the direction, establish the foundation, choose purposeful visuals, and test the experience. AI can help with every step, but the quality of the result still depends on what you ask it to notice.",
+      },
+      {
+        type: "p",
+        text: "You do not need to get everything right in the first prompt. You need to make the next draft more deliberate than the last one.",
+      },
     ],
   },
   {
     ...author,
-    slug: 'better-prompts-better-frontends',
-    title: 'Better prompts start with better direction',
-    subtitle: 'Replace “make it look better” with a brief your AI coding assistant can actually build from.',
-    date: '2026-10-13',
-    tag: 'Prompting',
-    hero: cover('prompt-direction', 'A charcoal terminal with an orange cursor and sculptural conversation tiles'),
-    takeaway: 'Describe the reader, the task, the visual rules, and the constraints. Ask for a small, reviewable change, then give feedback about what you can observe.',
+    slug: "better-prompts-better-frontends",
+    title: "Better prompts start with better direction",
+    subtitle:
+      "Replace “make it look better” with a brief your AI coding assistant can actually build from.",
+    date: "2026-10-13",
+    tag: "Prompting",
+    hero: cover(
+      "prompt-direction",
+      "A charcoal terminal with an orange cursor and sculptural conversation tiles",
+    ),
+    takeaway:
+      "Describe the reader, the task, the visual rules, and the constraints. Ask for a small, reviewable change, then give feedback about what you can observe.",
     content: [
-      { type: 'p', text: 'A long prompt is not automatically a good brief. You can spend a paragraph asking for an elegant, premium, beautiful website and still leave the assistant guessing about every important decision.' },
-      { type: 'p', text: 'Useful direction connects the design to a specific person doing a specific thing. Once that is clear, the visual decisions have something to answer to. A documentation page should make information easy to find. A landing page should explain the offer. An article should make you want to keep reading.' },
-      { type: 'h2', text: 'Start with the job of the page' },
-      { type: 'p', text: 'Write a sentence that describes who the page is for and what they should be able to do. Avoid beginning with an inventory of sections. A hero, three feature cards, and a testimonial row describe a layout, but they do not explain why that layout should exist.' },
-      { type: 'callout', tone: 'good', label: 'A useful starting sentence', text: '“This page helps a developer decide which frontend guide to read next. Make the article topic, summary, and reading time easy to compare.”' },
-      { type: 'p', text: 'Now the assistant can make choices in service of that task. It might emphasize categories, give descriptions more room, or simplify the navigation. You have a reason to accept or reject each change.' },
-      { type: 'h2', text: 'Turn taste into observable rules' },
-      { type: 'p', text: 'Words like premium or clean can be a starting point, but they need translation. Specify the qualities you can see: fewer accent colors, a larger gap between sections, a narrower line length, a stronger distinction between titles and labels.' },
-      { type: 'list', items: ['Typography: describe the hierarchy, weight, line length, and density you want.', 'Color: name the main background, text color, and role of the accent.', 'Layout: explain what should dominate and which elements should feel secondary.', 'Imagery: describe what the visual should communicate and where it should fit.'] },
-      { type: 'p', text: 'A reference image is helpful when paired with these notes. Without the notes, the assistant may copy the wrong thing. Say whether you care about the composition, the materials, the spacing, or the way a particular interaction works.' },
-      { type: 'h2', text: 'Make the constraints explicit' },
-      { type: 'p', text: 'Tell the assistant which parts of the project already work. Name the framework, the existing components, the routes that must keep working, and any content that must remain accurate. If there is an established design system, point to the source of truth.' },
-      { type: 'code', lang: 'Example brief', text: 'Audience: independent developers building with AI.\nGoal: help readers choose a practical frontend guide.\n\nKeep:\n- Existing article URLs and content\n- Keyboard navigation and theme switching\n- Shared components and design tokens\n\nImprove:\n- Title and summary hierarchy\n- Cover imagery and spacing\n- Mobile card layouts and empty search states\n\nFirst show one revised article card.\nExplain the choices before applying them site-wide.' },
-      { type: 'p', text: 'Constraints are not just limitations. They reduce the number of irrelevant choices and help the model spend its effort on the part you actually want to improve.' },
-      { type: 'h2', text: 'Give feedback in small, useful passes' },
-      { type: 'p', text: 'Review one representative section before asking for a whole redesign. This lets you catch a wrong direction while the change is still easy to understand. If the card is too dense, solve that problem before multiplying it across the page.' },
-      { type: 'callout', tone: 'note', label: 'Instead of “this still feels wrong”', text: '“The category label competes with the title. Make it quieter, keep the title’s current size, and add more space between the summary and author details.”' },
-      { type: 'p', text: 'Be equally specific about what should stay. If the spacing is right but the image is wrong, say so. Otherwise a broad request for another attempt can undo the best parts of the previous one.' },
-      { type: 'h2', text: 'Finish with evidence' },
-      { type: 'p', text: 'Ask the assistant to demonstrate the result: show desktop and mobile layouts, navigate the main flow, and test the states it changed. “Done” should mean the behavior was checked, not just that the files were saved.' },
-      { type: 'p', text: 'The best prompt is not a secret formula. It is a clear brief followed by thoughtful feedback. Make the work easier to understand, and you make it easier to improve.' },
+      {
+        type: "p",
+        text: "A long prompt is not automatically a good brief. You can spend a paragraph asking for an elegant, premium, beautiful website and still leave the assistant guessing about every important decision.",
+      },
+      {
+        type: "p",
+        text: "Useful direction connects the design to a specific person doing a specific thing. Once that is clear, the visual decisions have something to answer to. A documentation page should make information easy to find. A landing page should explain the offer. An article should make you want to keep reading.",
+      },
+      { type: "h2", text: "Start with the job of the page" },
+      {
+        type: "p",
+        text: "Write a sentence that describes who the page is for and what they should be able to do. Avoid beginning with an inventory of sections. A hero, three feature cards, and a testimonial row describe a layout, but they do not explain why that layout should exist.",
+      },
+      {
+        type: "callout",
+        tone: "good",
+        label: "A useful starting sentence",
+        text: "“This page helps a developer decide which frontend guide to read next. Make the article topic, summary, and reading time easy to compare.”",
+      },
+      {
+        type: "p",
+        text: "Now the assistant can make choices in service of that task. It might emphasize categories, give descriptions more room, or simplify the navigation. You have a reason to accept or reject each change.",
+      },
+      { type: "h2", text: "Turn taste into observable rules" },
+      {
+        type: "p",
+        text: "Words like premium or clean can be a starting point, but they need translation. Specify the qualities you can see: fewer accent colors, a larger gap between sections, a narrower line length, a stronger distinction between titles and labels.",
+      },
+      {
+        type: "list",
+        items: [
+          "Typography: describe the hierarchy, weight, line length, and density you want.",
+          "Color: name the main background, text color, and role of the accent.",
+          "Layout: explain what should dominate and which elements should feel secondary.",
+          "Imagery: describe what the visual should communicate and where it should fit.",
+        ],
+      },
+      {
+        type: "p",
+        text: "A reference image is helpful when paired with these notes. Without the notes, the assistant may copy the wrong thing. Say whether you care about the composition, the materials, the spacing, or the way a particular interaction works.",
+      },
+      { type: "h2", text: "Make the constraints explicit" },
+      {
+        type: "p",
+        text: "Tell the assistant which parts of the project already work. Name the framework, the existing components, the routes that must keep working, and any content that must remain accurate. If there is an established design system, point to the source of truth.",
+      },
+      {
+        type: "code",
+        lang: "Example brief",
+        text: "Audience: independent developers building with AI.\nGoal: help readers choose a practical frontend guide.\n\nKeep:\n- Existing article URLs and content\n- Keyboard navigation and theme switching\n- Shared components and design tokens\n\nImprove:\n- Title and summary hierarchy\n- Cover imagery and spacing\n- Mobile card layouts and empty search states\n\nFirst show one revised article card.\nExplain the choices before applying them site-wide.",
+      },
+      {
+        type: "p",
+        text: "Constraints are not just limitations. They reduce the number of irrelevant choices and help the model spend its effort on the part you actually want to improve.",
+      },
+      { type: "h2", text: "Give feedback in small, useful passes" },
+      {
+        type: "p",
+        text: "Review one representative section before asking for a whole redesign. This lets you catch a wrong direction while the change is still easy to understand. If the card is too dense, solve that problem before multiplying it across the page.",
+      },
+      {
+        type: "callout",
+        tone: "note",
+        label: "Instead of “this still feels wrong”",
+        text: "“The category label competes with the title. Make it quieter, keep the title’s current size, and add more space between the summary and author details.”",
+      },
+      {
+        type: "p",
+        text: "Be equally specific about what should stay. If the spacing is right but the image is wrong, say so. Otherwise a broad request for another attempt can undo the best parts of the previous one.",
+      },
+      { type: "h2", text: "Finish with evidence" },
+      {
+        type: "p",
+        text: "Ask the assistant to demonstrate the result: show desktop and mobile layouts, navigate the main flow, and test the states it changed. “Done” should mean the behavior was checked, not just that the files were saved.",
+      },
+      {
+        type: "p",
+        text: "The best prompt is not a secret formula. It is a clear brief followed by thoughtful feedback. Make the work easier to understand, and you make it easier to improve.",
+      },
     ],
   },
   {
     ...author,
-    slug: 'small-design-system-big-difference',
-    title: 'A small design system. A big difference.',
-    subtitle: 'The colors, type, and spacing decisions that stop your AI-generated UI from drifting apart.',
-    date: '2026-10-13',
-    tag: 'Frontend design',
-    hero: cover('design-system', 'Stacked ceramic design panels with consistent controls and an orange accent ring'),
-    takeaway: 'Start with a handful of semantic colors, a clear type scale, a spacing rhythm, and a few shared components. Expand the system when a real pattern appears.',
+    slug: "small-design-system-big-difference",
+    title: "A small design system. A big difference.",
+    subtitle:
+      "The colors, type, and spacing decisions that stop your AI-generated UI from drifting apart.",
+    date: "2026-10-13",
+    tag: "Frontend design",
+    hero: cover(
+      "design-system",
+      "Stacked ceramic design panels with consistent controls and an orange accent ring",
+    ),
+    takeaway:
+      "Start with a handful of semantic colors, a clear type scale, a spacing rhythm, and a few shared components. Expand the system when a real pattern appears.",
     content: [
-      { type: 'p', text: 'A frontend can look inconsistent without any individual component looking obviously broken. One button is slightly taller. One card has a softer radius. Every section has its own interpretation of muted gray.' },
-      { type: 'p', text: 'AI-assisted projects can accumulate these small differences quickly. Each request may be reasonable in isolation, while the whole interface gradually loses its rhythm. A small shared system gives both you and the assistant a set of decisions to reuse.' },
-      { type: 'h2', text: 'Name colors by what they do' },
-      { type: 'p', text: 'A palette becomes more useful when its names describe roles. Background, surface, text, muted text, border, and accent are enough to begin. Components can refer to those roles without knowing the exact shade underneath.' },
-      { type: 'code', lang: 'CSS', text: ':root {\n  --canvas: #fbfbfa;\n  --surface: #ffffff;\n  --ink: #181819;\n  --muted: #6b6b70;\n  --line: #e6e6e2;\n  --accent: #c94011;\n}\n\n.article-card {\n  background: var(--surface);\n  color: var(--ink);\n  border: 1px solid var(--line);\n}' },
-      { type: 'p', text: 'Roles also make theme changes easier to reason about. A dark theme can change the value of surface and text in one place. Check the resulting combinations rather than assuming a palette that works in one theme will work in another.' },
-      { type: 'h2', text: 'Give typography a clear hierarchy' },
-      { type: 'p', text: 'You do not need many sizes. You need a clear relationship between the page title, section heading, card title, body copy, and supporting label. Decide which role should attract attention and give the others room to support it.' },
-      { type: 'list', items: ['Keep body text comfortable to read at the actual content width, not just in a type specimen.', 'Use labels sparingly. Small uppercase text works best for short pieces of supporting information.', 'Let headings shrink at narrow widths while keeping the body copy readable.', 'Check long titles and realistic content. Short placeholder text hides layout problems.'] },
-      { type: 'p', text: 'Typography is also spacing. The gap after a heading tells the reader which paragraph belongs to it. The gap before the next heading signals a new thought. Treat these relationships as part of the system.' },
-      { type: 'h2', text: 'Choose a spacing rhythm' },
-      { type: 'p', text: 'Pick a short sequence of spacing values and use it consistently. A scale such as 4, 8, 12, 16, 24, 32, 48, and 64 pixels is a reasonable starting point. It is a tool for consistency, not a rule that must defeat your judgment.' },
-      { type: 'p', text: 'Related elements should sit closer together than unrelated elements. A title and summary need a smaller gap than two separate cards. A new section needs enough space to feel distinct. These simple relationships often improve a page more than adding another decorative element.' },
-      { type: 'callout', tone: 'good', label: 'A useful instruction for your assistant', text: '“Use the existing spacing tokens. If a new value seems necessary, explain which relationship the current scale cannot express before adding it.”' },
-      { type: 'h2', text: 'Reuse behavior as well as appearance' },
-      { type: 'p', text: 'A shared button should carry more than a background color. It should have a visible focus state, a comfortable target size, and consistent disabled behavior when needed. A shared article card should handle a long title and a missing description without breaking the layout.' },
-      { type: 'p', text: 'Start with the pieces that actually repeat. Navigation, buttons, article cards, and text links are common candidates. Resist creating a large abstraction for a component that only appears once and has no stable pattern yet.' },
-      { type: 'h2', text: 'Keep the system small enough to use' },
-      { type: 'p', text: 'A system is only useful if it helps the next change. Put the tokens somewhere obvious, keep a representative component easy to find, and tell the assistant to inspect both before editing.' },
-      { type: 'p', text: 'Then revisit the result in context. Check a few pages, a narrow screen, keyboard focus, and both themes if you support them. The goal is a coherent experience, not an impressive token file.' },
-      { type: 'p', text: 'Start small. Repeat deliberately. Let real needs earn their place in the system.' },
+      {
+        type: "p",
+        text: "A frontend can look inconsistent without any individual component looking obviously broken. One button is slightly taller. One card has a softer radius. Every section has its own interpretation of muted gray.",
+      },
+      {
+        type: "p",
+        text: "AI-assisted projects can accumulate these small differences quickly. Each request may be reasonable in isolation, while the whole interface gradually loses its rhythm. A small shared system gives both you and the assistant a set of decisions to reuse.",
+      },
+      { type: "h2", text: "Name colors by what they do" },
+      {
+        type: "p",
+        text: "A palette becomes more useful when its names describe roles. Background, surface, text, muted text, border, and accent are enough to begin. Components can refer to those roles without knowing the exact shade underneath.",
+      },
+      {
+        type: "code",
+        lang: "CSS",
+        text: ":root {\n  --canvas: #fbfbfa;\n  --surface: #ffffff;\n  --ink: #181819;\n  --muted: #6b6b70;\n  --line: #e6e6e2;\n  --accent: #c94011;\n}\n\n.article-card {\n  background: var(--surface);\n  color: var(--ink);\n  border: 1px solid var(--line);\n}",
+      },
+      {
+        type: "p",
+        text: "Roles also make theme changes easier to reason about. A dark theme can change the value of surface and text in one place. Check the resulting combinations rather than assuming a palette that works in one theme will work in another.",
+      },
+      { type: "h2", text: "Give typography a clear hierarchy" },
+      {
+        type: "p",
+        text: "You do not need many sizes. You need a clear relationship between the page title, section heading, card title, body copy, and supporting label. Decide which role should attract attention and give the others room to support it.",
+      },
+      {
+        type: "list",
+        items: [
+          "Keep body text comfortable to read at the actual content width, not just in a type specimen.",
+          "Use labels sparingly. Small uppercase text works best for short pieces of supporting information.",
+          "Let headings shrink at narrow widths while keeping the body copy readable.",
+          "Check long titles and realistic content. Short placeholder text hides layout problems.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Typography is also spacing. The gap after a heading tells the reader which paragraph belongs to it. The gap before the next heading signals a new thought. Treat these relationships as part of the system.",
+      },
+      { type: "h2", text: "Choose a spacing rhythm" },
+      {
+        type: "p",
+        text: "Pick a short sequence of spacing values and use it consistently. A scale such as 4, 8, 12, 16, 24, 32, 48, and 64 pixels is a reasonable starting point. It is a tool for consistency, not a rule that must defeat your judgment.",
+      },
+      {
+        type: "p",
+        text: "Related elements should sit closer together than unrelated elements. A title and summary need a smaller gap than two separate cards. A new section needs enough space to feel distinct. These simple relationships often improve a page more than adding another decorative element.",
+      },
+      {
+        type: "callout",
+        tone: "good",
+        label: "A useful instruction for your assistant",
+        text: "“Use the existing spacing tokens. If a new value seems necessary, explain which relationship the current scale cannot express before adding it.”",
+      },
+      { type: "h2", text: "Reuse behavior as well as appearance" },
+      {
+        type: "p",
+        text: "A shared button should carry more than a background color. It should have a visible focus state, a comfortable target size, and consistent disabled behavior when needed. A shared article card should handle a long title and a missing description without breaking the layout.",
+      },
+      {
+        type: "p",
+        text: "Start with the pieces that actually repeat. Navigation, buttons, article cards, and text links are common candidates. Resist creating a large abstraction for a component that only appears once and has no stable pattern yet.",
+      },
+      { type: "h2", text: "Keep the system small enough to use" },
+      {
+        type: "p",
+        text: "A system is only useful if it helps the next change. Put the tokens somewhere obvious, keep a representative component easy to find, and tell the assistant to inspect both before editing.",
+      },
+      {
+        type: "p",
+        text: "Then revisit the result in context. Check a few pages, a narrow screen, keyboard focus, and both themes if you support them. The goal is a coherent experience, not an impressive token file.",
+      },
+      {
+        type: "p",
+        text: "Start small. Repeat deliberately. Let real needs earn their place in the system.",
+      },
     ],
   },
-].map(post => ({ ...post, readTime: `${Math.max(1, Math.ceil(post.content.reduce((count, block) => count + (block.text || block.items?.join(' ') || '').split(/\s+/).length, 0) / 200))} min read` }))
-export function getPost(slug) { return posts.find(post => post.slug === slug) }
+].map((post) => ({
+  ...post,
+  readTime: `${Math.max(1, Math.ceil(post.content.reduce((count, block) => count + (block.text || block.items?.join(" ") || "").split(/\s+/).length, 0) / 200))} min read`,
+}));
+export function getPost(slug) {
+  return posts.find((post) => post.slug === slug);
+}
