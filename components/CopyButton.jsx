@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 export default function CopyButton({ text, label = "Copy", className = "" }) {

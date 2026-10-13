@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Icon from "./Icon";
 import { FOUNDER_X_URL } from "../data/brand";
 function formatDate(iso) {
@@ -29,7 +30,7 @@ export function PostMeta({ post }) {
 export default function PostCard({ post, featured = false }) {
   return (
     <article className={`post-card ${featured ? "featured-card" : ""}`}>
-      <a
+      <Link
         href={`/blog/${post.slug}`}
         className="post-card-image"
         tabIndex={-1}
@@ -56,7 +57,7 @@ export default function PostCard({ post, featured = false }) {
             <Icon name="sparkle" size={13} /> THE ESSENTIAL READ
           </span>
         )}
-      </a>
+      </Link>
       <div className="post-card-copy">
         <div className="post-category">
           <span className="tiny-dot" />
@@ -64,14 +65,14 @@ export default function PostCard({ post, featured = false }) {
           {featured && <span className="featured-label">START HERE</span>}
         </div>
         <h3>
-          <a href={`/blog/${post.slug}`}>{post.title}</a>
+          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
         </h3>
         <p>{post.subtitle}</p>
         <PostMeta post={post} />
         {featured && (
-          <a href={`/blog/${post.slug}`} className="text-link">
+          <Link href={`/blog/${post.slug}`} className="text-link">
             Read the guide <Icon name="arrow" size={17} />
-          </a>
+          </Link>
         )}
       </div>
     </article>

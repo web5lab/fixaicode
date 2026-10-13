@@ -1,45 +1,41 @@
-# fixaicode
+# fixaicode — Next.js
 
-An independent journal about improving AI-generated frontends, prepared for **https://fixaicode.org**. Built with React 19 and Vite.
+The fixaicode site migrated from Vite + React to the Next.js App Router,
+exported as a fully static site (`output: "export"`).
 
-## Develop
+## Commands
 
-```sh
-npm install
-npm run dev
+```bash
+npm run dev     # dev server at http://localhost:3000
+npm run build   # static export into out/
+npm test        # SEO checks against the out/ export (run build first)
 ```
 
-The default is light mode. Readers can switch themes; their choice is remembered locally. No account or service is required.
+Deploy the `out/` folder to any static host (Netlify, Vercel, Cloudflare
+Pages, S3). Next writes `404.html`, which Netlify and most hosts pick up
+automatically.
 
-## Production
+## Structure
 
-```sh
-npm run lint
-npm run build
-npm test
-npm run preview
-```
+- `app/` — routes: `/` (home), `/blog`, `/blog/[slug]`, plus generated
+  `sitemap.xml`, `robots.txt`, `manifest.webmanifest`, and `feed.xml` (RSS).
+- `components/` — UI components. Interactive ones (`Nav`, `Journal`,
+  `CopyButton`, `PostArticle`) are client components; the rest render on
+  the server.
+- `data/posts.js` — all articles as structured data. Add a post here and it
+  automatically appears in the journal, sitemap, RSS feed, and static params.
+- `app/globals.css` — the design system (Tailwind v4 + custom properties).
 
-Deploy the generated `dist/` directory to a static host. The build renders the homepage, journal, and every article into HTML, with unique titles, descriptions, canonical URLs, Open Graph tags, and structured data. It also generates a sitemap and a 404 page. Each article is available as both a directory index and an HTML file for hosts that resolve clean URLs differently. Configure your host to serve existing files and the generated `404.html` for unknown paths; a Netlify-compatible `_redirects` file is included.
+## SEO coverage
 
-The domain is configured in metadata. This repository change does not configure DNS or publish the website.
-
-## Content and design
-
-- `src/data/posts.js`: article content, topics, publication dates, images; reading times are calculated from content.
-- `src/data/site.js`: site URL and metadata.
-- `src/index.css`: shared color, type, layout, responsive, and dark-mode styles.
-- `src/components/Journal.jsx`: accessible topic filters and text search.
-- `src/pages/Post.jsx`: table of contents, reading progress, code copying, author details, and related articles.
-
-The existing `/#/post/slug` links continue to resolve to clean `/blog/slug` URLs.
-
-## Original artwork
-
-Four original images were generated with the built-in imagegen tool. The final 1536px and 768px WebP versions live in `public/images/`; every delivered file is under 80 KB. Exact prompts are recorded in `public/images/GENERATION.md`. The images and self-hosted fonts require no external network calls at runtime. Font licenses are included in `public/fonts/`.
-
-`npm run images:prepare` is an optional source-image conversion command. It uses the local original paths in `scripts/generated-images.json`; update those paths if moving the original PNGs to another machine. Normal development and production builds use the checked-in WebP assets and do not require the originals.
-
-## Verification
-
-`npm test` checks the generated article HTML, metadata, sitemap, 404 behavior, article links, and responsive image files. Build first. Interactive checks also cover search, topic filters, mobile navigation, theme persistence, table-of-contents links, and copy controls.
+- Per-page `<title>`, meta description, and canonical URL via the Metadata API
+  (`metadataBase` + `alternates`).
+- Open Graph (`og:type article` with published/modified time, section, tags)
+  and Twitter cards with per-post hero images.
+- JSON-LD structured data: `WebSite` (home), `Blog` (journal),
+  `BlogPosting` + `BreadcrumbList` (articles).
+- `sitemap.xml` with `lastmod` from each post's `updated` date, `robots.txt`,
+  RSS feed advertised via `<link rel="alternate">` on every page.
+- Noindexed 404, web app manifest, theme-color for light/dark,
+  preloaded self-hosted fonts, no-flash dark mode script, and legacy
+  `#/post/<slug>` URLs redirected to `/blog/<slug>`.

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Icon, { Logo } from "./Icon";
 import { PostMcpByline } from "./PostMcpBadge";
 import { CONTACT_EMAIL, FOUNDER_X_URL, PRODUCTS_URL } from "../data/brand";
@@ -8,9 +9,9 @@ export default function Footer() {
       <div className="footer-main">
         <div>
           <div className="brand-lockup">
-            <a href="/" aria-label="fixaicode home">
+            <Link href="/" aria-label="fixaicode home">
               <Logo />
-            </a>
+            </Link>
             <PostMcpByline tone="auto" className="brand-family" />
           </div>
           <p>
@@ -20,9 +21,9 @@ export default function Footer() {
         </div>
         <div className="footer-links">
           <span>THE FIELD GUIDE</span>
-          <a href="/blog">All articles</a>
-          <a href="/#method">The method</a>
-          <a href="/#about">About fixaicode</a>
+          <Link href="/blog">All articles</Link>
+          <Link href="/#method">The method</Link>
+          <Link href="/#about">About fixaicode</Link>
         </div>
         <div className="footer-links">
           <span>FROM THE MAKER</span>

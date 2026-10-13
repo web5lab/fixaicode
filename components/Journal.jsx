@@ -1,4 +1,6 @@
+"use client";
 import { useState } from "react";
+import Link from "next/link";
 import { posts } from "../data/posts";
 import Icon from "./Icon";
 import PostCard from "./PostCard";
@@ -106,9 +108,9 @@ export default function Journal({ full = false }) {
       {!full && (
         <div className="journal-bottom">
           <span>Written from experience. Made to put into practice.</span>
-          <a href="/blog" className="text-link">
+          <Link href="/blog" className="text-link">
             Explore the journal <Icon name="arrow" size={17} />
-          </a>
+          </Link>
         </div>
       )}
       <ContactNote />

@@ -1,3 +1,4 @@
+"use client";
 import { useSyncExternalStore } from "react";
 function getTheme() {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";

@@ -1,9 +1,11 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { getPost, posts } from "../data/posts";
-import Icon from "../components/Icon";
-import CopyButton from "../components/CopyButton";
-import PostCard, { PostMeta } from "../components/PostCard";
-import ContactNote from "../components/ContactNote";
+import Icon from "./Icon";
+import CopyButton from "./CopyButton";
+import PostCard, { PostMeta } from "./PostCard";
+import ContactNote from "./ContactNote";
 import { FOUNDER_X_URL } from "../data/brand";
 
 function headingId(text) {
@@ -102,23 +104,7 @@ function Block({ block }) {
       return null;
   }
 }
-export function NotFound() {
-  return (
-    <main id="main" className="not-found container">
-      <span className="eyebrow">A SMALL DETOUR</span>
-      <h1>
-        This page hasn’t
-        <br />
-        been built.
-      </h1>
-      <p>Find your next idea in the journal.</p>
-      <a href="/blog" className="button">
-        Back to the articles <Icon name="arrow" size={18} />
-      </a>
-    </main>
-  );
-}
-export default function Post({ slug }) {
+export default function PostArticle({ slug }) {
   const post = getPost(slug);
   const articleRef = useRef(null);
   const [progress, setProgress] = useState(0);
@@ -157,7 +143,7 @@ export default function Post({ slug }) {
       window.removeEventListener("resize", onScroll);
     };
   }, [post]);
-  if (!post) return <NotFound />;
+  if (!post) return null;
   const sections = post.content.filter((block) => block.type === "h2");
   return (
     <main id="main" className="post-page">
@@ -165,10 +151,10 @@ export default function Post({ slug }) {
         <span style={{ width: `${progress}%` }} />
       </div>
       <header className="article-header container">
-        <a className="back-link" href="/blog">
+        <Link className="back-link" href="/blog">
           <Icon name="back" size={16} />
           Back to the journal
-        </a>
+        </Link>
         <div className="post-category">
           <span className="tiny-dot" />
           {post.tag}
@@ -274,9 +260,9 @@ export default function Post({ slug }) {
             <span className="eyebrow">KEEP THE IDEAS GOING</span>
             <h2>Your next good read.</h2>
           </div>
-          <a href="/blog" className="text-link">
+          <Link href="/blog" className="text-link">
             All articles <Icon name="arrow" size={17} />
-          </a>
+          </Link>
         </div>
         <div className="posts-grid">
           {posts

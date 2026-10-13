@@ -1,7 +1,15 @@
+import Link from "next/link";
 import Icon from "../components/Icon";
 import Journal from "../components/Journal";
 import CopyButton from "../components/CopyButton";
+import JsonLd from "../components/JsonLd";
 import { FOUNDER_X_URL, PRODUCTS_URL } from "../data/brand";
+import { websiteSchema, pageAlternates } from "../data/site";
+
+export const metadata = {
+  alternates: pageAlternates("/"),
+};
+
 const starterPrompt = `Refine this frontend while preserving its functionality.
 
 1. Inspect the existing components and design tokens.
@@ -24,9 +32,9 @@ function Method() {
               Here’s what comes next.
             </h2>
           </div>
-          <a className="text-link" href="/blog/how-to-fix-ai-frontend">
+          <Link className="text-link" href="/blog/how-to-fix-ai-frontend">
             The complete method <Icon name="arrow" size={17} />
-          </a>
+          </Link>
         </div>
         <div className="method-grid">
           {[
@@ -90,12 +98,13 @@ function Method() {
 export default function Home() {
   return (
     <main id="main">
+      <JsonLd schema={websiteSchema()} />
       <section className="hero container">
         <div className="hero-copy">
-          <a href="/blog" className="hero-kicker">
+          <Link href="/blog" className="hero-kicker">
             <span className="tiny-dot" /> A FIELD GUIDE FOR THE AI BUILDER{" "}
             <Icon name="arrow" size={14} />
-          </a>
+          </Link>
           <h1>
             AI writes the code.
             <br />
@@ -109,12 +118,12 @@ export default function Home() {
             the difference.
           </p>
           <div className="hero-actions">
-            <a href="/blog/how-to-fix-ai-frontend" className="button">
+            <Link href="/blog/how-to-fix-ai-frontend" className="button">
               Make your next draft better <Icon name="arrow" size={18} />
-            </a>
-            <a href="/blog" className="text-link">
+            </Link>
+            <Link href="/blog" className="text-link">
               Explore the blog <Icon name="diagonal" size={16} />
-            </a>
+            </Link>
           </div>
           <div className="hero-byline">
             <span className="author-avatar">S</span>
@@ -229,9 +238,9 @@ export default function Home() {
           the beginning.
         </h2>
         <p>Bring a little more intention to your next build.</p>
-        <a href="/blog/how-to-fix-ai-frontend" className="button">
+        <Link href="/blog/how-to-fix-ai-frontend" className="button">
           Start with the essential guide <Icon name="arrow" size={18} />
-        </a>
+        </Link>
         <span className="cta-bracket bracket-left" aria-hidden="true">
           ‹
         </span>
