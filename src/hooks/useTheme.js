@@ -1,22 +1,12 @@
 import { useEffect, useState } from 'react'
-
-function getInitialTheme() {
-  const saved = localStorage.getItem('theme')
-  if (saved === 'light' || saved === 'dark') return saved
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
-}
-
 export function useTheme() {
-  const [theme, setTheme] = useState(getInitialTheme)
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  const toggle = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
-
+  const [theme, setTheme] = useState('light')
+  useEffect(() => { setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light') }, [])
+  function toggle() {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    document.documentElement.classList.toggle('dark', next === 'dark')
+    try { localStorage.setItem('theme', next) } catch { /* Theme still works without storage. */ }
+  }
   return { theme, toggle }
 }

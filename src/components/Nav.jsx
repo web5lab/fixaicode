@@ -1,57 +1,20 @@
-function SunIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-    </svg>
-  )
-}
-
-function MoonIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  )
-}
-
-export default function Nav({ theme, onToggleTheme }) {
-  return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#f5f5f7]/70 dark:bg-black/60 border-b border-black/5 dark:border-white/10">
-      <nav className="mx-auto flex h-12 max-w-5xl items-center justify-between px-5">
-        <a href="#/" className="flex items-center gap-2 group">
-          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-purple-600 text-[11px] font-bold text-white">
-            f
-          </span>
-          <span className="text-[15px] font-semibold tracking-tight text-[#1d1d1f] dark:text-[#f5f5f7]">
-            fixaicode
-          </span>
-        </a>
-
-        <div className="flex items-center gap-5">
-          <a
-            href="#/"
-            className="text-[13px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] dark:text-[#f5f5f7]/80 dark:hover:text-white transition-colors"
-          >
-            Blog
-          </a>
-          <a
-            href="https://postmcp.ai"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[13px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] dark:text-[#f5f5f7]/80 dark:hover:text-white transition-colors"
-          >
-            PostMCP AI
-          </a>
-          <button
-            onClick={onToggleTheme}
-            aria-label="Toggle dark mode"
-            className="flex h-7 w-7 items-center justify-center rounded-full text-[#1d1d1f]/70 hover:bg-black/5 dark:text-[#f5f5f7]/70 dark:hover:bg-white/10 transition-colors cursor-pointer"
-          >
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-          </button>
-        </div>
-      </nav>
-    </header>
-  )
+import { useState } from 'react'
+import Icon, { Logo } from './Icon'
+export default function Nav({ theme, onToggleTheme, page }) {
+  const [open, setOpen] = useState(false)
+  return <header className="site-header">
+    <nav className="site-nav" aria-label="Main navigation" onKeyDown={(event) => { if (event.key === 'Escape') setOpen(false) }}>
+      <a href="/" aria-label="fixaicode home" onClick={() => setOpen(false)}><Logo /></a>
+      <div className={`nav-links ${open ? 'is-open' : ''}`} id="navigation-links">
+        <a href="/blog" aria-current={page === 'blog' || page === 'post' ? 'page' : undefined} onClick={() => setOpen(false)}>The blog</a>
+        <a href="/#method" onClick={() => setOpen(false)}>The method</a>
+        <a href="/#about" onClick={() => setOpen(false)}>About</a>
+      </div>
+      <div className="nav-actions">
+        <button className="icon-button theme-button" onClick={onToggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}><Icon name={theme === 'dark' ? 'sun' : 'moon'} size={18} /></button>
+        <a className="button button-small nav-cta" href="/blog/how-to-fix-ai-frontend">Start reading <Icon name="arrow" size={16} /></a>
+        <button className="icon-button menu-button" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="navigation-links" onClick={() => setOpen(!open)}><Icon name={open ? 'close' : 'menu'} /></button>
+      </div>
+    </nav>
+  </header>
 }

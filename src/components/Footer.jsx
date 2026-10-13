@@ -1,24 +1,12 @@
-const currentYear = new Date().getFullYear()
-
+import Icon, { Logo } from './Icon'
 export default function Footer() {
-  return (
-    <footer className="border-t border-black/5 dark:border-white/10">
-      <div className="mx-auto max-w-5xl px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-[12px] text-[#86868b]">
-          © {currentYear} fixaicode — a blog by{' '}
-          <a
-            href="https://postmcp.ai"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#0071e3] hover:underline"
-          >
-            PostMCP AI
-          </a>
-        </p>
-        <p className="text-[12px] text-[#86868b]">
-          Built by Shiva, Founder of PostMCP AI
-        </p>
-      </div>
-    </footer>
-  )
+  return <footer className="site-footer container">
+    <div className="footer-main">
+      <div><a href="/" aria-label="fixaicode home"><Logo /></a><p>A little direction.<br />A much better frontend.</p></div>
+      <div className="footer-links"><span>THE FIELD GUIDE</span><a href="/blog">All articles</a><a href="/#method">The method</a><a href="/#about">About fixaicode</a></div>
+      <div className="footer-links"><span>FROM THE MAKER</span><a href="https://postmcp.ai" target="_blank" rel="noreferrer">PostMCP AI <Icon name="diagonal" size={14} /></a><a href="https://fixaicode.org">fixaicode.org <Icon name="diagonal" size={14} /></a></div>
+      <div className="footer-note"><span className="tiny-dot" /> Built with AI.<br /><span>Refined with intention.</span></div>
+    </div>
+    <div className="footer-bottom"><span>© {new Date().getFullYear()} fixaicode. All rights reserved.</span><span>An independent publication by Shiva, founder of PostMCP AI.</span><a href="#main">Back to top ↑</a></div>
+  </footer>
 }
