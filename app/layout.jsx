@@ -120,6 +120,11 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        <script
+          defer
+          src="https://buyflow.io/tracker.js?v=3"
+          data-project="a8e3afbe-c08e-492f-9c99-ddaa450767e5"
+        />
       </head>
       <body>
         <div className="app-shell">
